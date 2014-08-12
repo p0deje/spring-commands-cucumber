@@ -10,3 +10,11 @@ Add to your Gemfile:
 ``` ruby
 gem "spring-commands-cucumber"
 ```
+
+## Changing environment
+
+By default, cucumber is being run in `test` Rails environment. If you want to change it, add the following to `config/spring.rb`:
+
+```ruby
+Spring::Commands::Cucumber.environment = 'cucumber'
+```

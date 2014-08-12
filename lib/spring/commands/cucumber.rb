@@ -2,6 +2,7 @@ module Spring
   module Commands
     class Cucumber
       class << self
+        attr_accessor :environment
         attr_accessor :environment_matchers
       end
 
@@ -11,7 +12,7 @@ module Spring
       }
 
       def env(args)
-        return ENV['RAILS_ENV'] if ENV['RAILS_ENV']
+        return self.class.environment if self.class.environment
 
         self.class.environment_matchers.each do |matcher, environment|
           return environment if matcher === (args.first || :default)
